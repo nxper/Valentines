@@ -1,0 +1,342 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
+  }
+  
+  .calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    z-index: 11;
+  }
+  
+  .calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+    pointer-events: all;
+  }
+  
+  .calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .span-two {
+    grid-column: span 2;
+  }
+
+  .output {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .output .previous-operand {
+    color: crimson;
+    font-size: 1.5rem;
+  }
+  .output .current-operand {
+    color: white;
+    font-size: 3rem;
+  }
+  
+  .configuration {
+    margin: 3%;
+    align-items: end;
+  }
+  
+  .configuration > button {
+    position: fixed;
+    cursor: pointer;
+    /*Esta jalada convierte al maus a punter cuando lo poner sobre el*/
+    font-weight: 500;
+    font-size: 2.3rem;
+    border: 2px solid black;
+    outline: none;
+    background-color: whitesmoke;
+    border-radius: 10px;
+  }
+  .config-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    z-index: 10;
+    background-color:gray;
+    width: 500px;
+    max-width: 60%;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+  }
+  .config-content.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 12;
+  }
+  .config-header {
+    padding: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .config-header .configTitle{
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  .config-header .close-button{
+    cursor: pointer;
+    padding-right: 20px;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: gray;
+  }
+
+  .config-body {
+    padding: 20px 25px;
+  }
+
+  .configuration > button:hover {
+   background-color: white;
+  }
+
+
+  #overlay {
+    position: fixed;
+    /*Nose q ase esto jajjajksajsk*/
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
+
+  #overlay.active{
+    opacity: 1;
+    pointer-events: all;
+    z-index: 6;
+  }
+
+  .configTitle{
+    padding: 10px 20px;
+  }
+
+ .darkThemeButton {
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  font-weight: 600;
+ }
+
+ .close-button:hover {
+  color: red;
+ }
+ 
+ .darkThemeButton:hover {
+  font-weight: 600;
+  color: black;
+  background-color: white;
+ }
+ .calculator-grid.Dark {
+  color: gray;
+  border-color: black;
+ }
+ .lightThemeButton {
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 600;
+  border: 2px black;
+  color: black;
+  font-size: 0.9rem;
+  position: relative;
+  border-style: groove;
+ }
+ .lightThemeButton:hover{
+  border-style: dotted;
+ }
+ body.Dark{
+  background: rgba(5, 4, 4, 0.904);
+ }
+ .output.Dark{
+  background-color: white;
+  z-index: 0;
+  border: white;
+  border-style: solid;
+ }
+
+ .calculator-grid.Dark > button{
+  border: 1px black;
+  border-style: solid;
+ }
+ .current-operand.Dark{
+  color: rgba(7, 15, 73, 0.839);
+ }
+ .QuizButton{
+  border: 2px;
+  border-radius: 10px;
+  border-color: blue;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  border-style: groove;
+  background-color: purple;
+ }
+ #quizDisplay{
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  pointer-events: none;
+  opacity: 0;
+  left: 300px;
+  max-width: fit-content;
+  border: 1px solid black;
+  justify-content: center;
+  background-color: white;
+  border-radius: 1px;
+  font-weight: 600;
+  font-size: 30px;
+  color: red;
+  z-index: 5;
+ }
+ .QuizButton:hover{
+  background-color: yellow;
+ }
+ .questionPrompt{
+  padding-left: 300px;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+ }
+ .questionPrompt.active{
+  opacity: 1;
+ }
+ .questionPrompt.Dark{
+  color: whitesmoke;
+ }
+ .quizDisplay.Dark{
+  background-color: beige;
+  color: blue;
+ }
+ #questionNumberinf{
+  width: 50px;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  left: 400px;
+  height: 30px;
+  background-color: aliceblue;
+  color: black;
+  font-size: 13px;
+  font-weight: 800;
+  pointer-events: none;
+  opacity: 0;
+ }
+ #questionNumberinf.active{
+  opacity: 1;
+  pointer-events: all;
+ }
+ .questionPrompt.quizActive{
+  color: #00FF6C;
+  font-weight: 700;
+ }
+ .questionPrompt.quizinActive{
+  color: #ff2600;
+  font-weight: 700;
+ }
+ .one.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+ .two.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+ .three.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+ .four.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+ .five.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+  .six.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+  .seven.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+  .eight.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+  .nine.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+ .zero.inactive{
+  opacity: .8;
+  pointer-events: none;
+ }
+ #closebuttonQ{
+  opacity: 0;
+  pointer-events: none;
+  position: sticky;
+  font-size: 20px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  left: 400px;
+  top: 10px;
+  color: #ff2600;
+  background: none;
+  z-index: 12;
+ }
+
+ #closebuttonQ.active{
+  pointer-events: all;
+  opacity: 1;
+ }
+
+ #quizDisplay.active{
+  pointer-events: all;
+  opacity: 1;
+ }
+ #quizDisplay.active{
+  pointer-events: all;
+  opacity: 1;
+ }

@@ -1,0 +1,51 @@
+body{
+    background-color:pink ;
+}
+#osoGif{
+    display: none;
+}
+#osoGif.si{
+    display: block;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    max-height: 500px;
+    width:auto;
+}
+#todo{
+    width: 50%;
+    margin: auto;
+    padding: 100px;
+}
+#todo.si{
+    display: none;
+}
+/*Imagen del osito*/
+body > img {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    width:auto;
+}
+.botones > button{
+    cursor: pointer;
+    font-size: 24px;
+    border: 1px solid white;
+    justify-content: center;
+    outline: none;
+    pointer-events: all;
+    border-radius: 10px;
+    min-width: 50px;
+    width: auto;
+}
+.botones > button:hover{
+    opacity: 0.6;
+}
+#yes{
+    background-color: limegreen;
+}
+#no{
+    background-color: crimson;
+}
